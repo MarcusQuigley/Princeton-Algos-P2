@@ -53,6 +53,31 @@ def course_schedule(numCourses, prerequisites):
     if not dfs(j): return False
   return True
 
+def topological_sort(n,data):
+  #queue = []
+  result_queue = []
+  graph = [[] for _ in range(n)]
+  for x,y in data:
+    graph[x].append(y)
+  #queue.append(data[0][0])
+  
+  def dfs(item):
+    if item not in result_queue:
+      adjacents = graph[item]
+      if adjacents:
+        for adj in adjacents:
+          dfs(adj)
+      result_queue.append(item)
+
+  for i in range(n):
+      dfs(i)
+  
+  return reversed(result_queue)
+
+
+  
+
+
  
 
 
