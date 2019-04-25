@@ -3,9 +3,9 @@ import unittest
 #from weeks import week2
 from weeks.week2 import kruskal
 from weeks.week2 import prims
-from weeks.week2 import dijkstra
+ 
 
-class TestWeek2(unittest.TestCase):
+class TestWeek2MST(unittest.TestCase):
   def test_kruskal_ctr(self): 
     expected = kruskal.Kruskal(8,self.create_graph())
     self.assertIsNotNone(expected)
@@ -32,22 +32,7 @@ class TestWeek2(unittest.TestCase):
     print(expected)
     self.assertEqual(expected,16)
 
-  def test_dijkstra_exists(self):
-    graph = self.create_edge_list()
-    dijk = dijkstra.Dijkstra(6, graph)
-    self.assertIsNotNone(dijk)
-
-  def test_dijkstra_compute_sp(self):
-    graph = self.create_edge_list()
-    dijk = dijkstra.Dijkstra(6, graph)
-    dijk.compute_shortestPath_withEdge_lists()
-    self.assertEqual(len(dijk.arr_visited), 0)
-
-  def test_dijkstra_compute_sp2(self):
-    graph = self.create_edge_list2()
-    dijk = dijkstra.Dijkstra(8, graph)
-    dijk.compute_shortestPath_withEdge_lists()
-    self.assertEqual(len(dijk.arr_visited), 0)
+  
 
   def create_graph(self):
     graph = []
@@ -110,7 +95,6 @@ class TestWeek2(unittest.TestCase):
     graph[5].append(list((3,2)))
     graph[5].append(list((4,3)))
     return graph
-
 
   def create_edge_list2(self):
     graph = [[] for _ in range(8)]
